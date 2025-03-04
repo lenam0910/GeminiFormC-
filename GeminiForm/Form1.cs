@@ -12,13 +12,17 @@ namespace GeminiForm
 {
     public partial class Form1 : Form
     {
-        private string apiKey = "AIzaSyAJbeqohHAZ9U7eOcf00T6k4GmDEr7j5wU";  // Đổi API Key hợp lệ
+        private string apiKey = "";  
 
         public Form1()
         {
             InitializeComponent();
         }
-
+        public Form1(string apiKeyFrom)
+        {
+            InitializeComponent();
+            apiKey = apiKeyFrom;
+        }
         private async void button1_Click(object sender, EventArgs e)
         {
             string userInput = textBox1.Text;
@@ -74,6 +78,13 @@ namespace GeminiForm
             {
                 return $"Lỗi API: {response.StatusCode} - {response.ReasonPhrase}\nChi tiết: {responseBody}";
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            KeyForm keyForm = new KeyForm();
+            keyForm.Show();
+            this.Hide();
         }
     }
 }
